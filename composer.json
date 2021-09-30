@@ -12,5 +12,8 @@
     },
     "scripts": {
         "demo1" : "Vtodorov\\Demo1\\DemoPlugin::dumpAll"
+    },
+    "extra": {
+        "class": "Vtodorov\\Demo1\\DemoPlugin"
     }
 }
