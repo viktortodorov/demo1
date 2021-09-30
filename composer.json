@@ -1,0 +1,12 @@
+{
+    "name": "vtodorov/demo1",
+    "type": "composer-plugin",
+    "autoload": {
+        "psr-4": {
+            "Vtodorov\\Demo1\\": "src/"
+        }
+    },
+    "require": {
+        "composer-plugin-api": "^2.1"
+    }
+}
