@@ -18,11 +18,14 @@ class DemoPlugin implements PluginInterface
 {
     public function activate(Composer $composer, IOInterface $io)
     {
+	self::dumpAll($composer);
         // Nothing to do here, as all features are provided through event listeners
     }
 
     public static function getSubscribedEvents()
     {
+	var_dump("AAAAAAAAAAA");
+
         return [
             "post-autoload-dump" => [
                 ['dumpAll', 0]
@@ -33,12 +36,11 @@ class DemoPlugin implements PluginInterface
         ];
     }
 
-    public static function dumpAll(Event $composerEvent)
+    public static function dumpAll(Composer $composer)
     {
-        $io = $composerEvent->getIO();
-        $io->write('<info>thadafinser/package-info:</info>  Generating class...');
+       
+        echo ("<info>thadafinser/package-info:</info>  Generating class...\n");
 
-        $composer = $composerEvent->getComposer();
 
         $packages = $composer->getRepositoryManager()->getLocalRepository()->getPackages();
 
@@ -48,11 +50,11 @@ class DemoPlugin implements PluginInterface
             $outputDir = "vendor/" . $name;
 
             $dirinfo = self::dirsize($outputDir);
-            $io->write("** " . $name . ": size: (" . ($dirinfo['size'] / 1024) . " KB) files: " . $dirinfo['howmany']);
+            echo "** " . $name . ": size: (" . ($dirinfo['size'] / 1024) . " KB) files: " . $dirinfo['howmany'] . "\n";
 
         }
 
-        $io->write('<info>thadafinser/package-info:</info> ...generating class');
+        echo ('<info>thadafinser/package-info:</info> ...generating class' . "\n");
     }
 
     public static function dirsize($dir) 
