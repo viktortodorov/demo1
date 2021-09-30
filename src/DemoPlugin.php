@@ -27,7 +27,9 @@ class DemoPlugin implements PluginInterface
             "post-autoload-dump" => [
                 ['dumpAll', 0]
             ],
-            ScriptEvents::POST_UPDATE_CMD => 'dumpAll'
+            "post-update" => [
+                ['dumpAll', 0]
+            ],
         ];
     }
 
