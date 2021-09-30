@@ -24,7 +24,9 @@ class DemoPlugin implements PluginInterface
     public static function getSubscribedEvents()
     {
         return [
-            "post-autoload-dump" => 'dumpAll',
+            "post-autoload-dump" => [
+                ['dumpAll', 0]
+            ],
             ScriptEvents::POST_UPDATE_CMD => 'dumpAll'
         ];
     }
